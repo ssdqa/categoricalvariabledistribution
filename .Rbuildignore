@@ -1,2 +1,3 @@
-^categoricalvariabledistribution\.Rproj$
+^data-raw$
+^.*\.Rproj$
 ^\.Rproj\.user$

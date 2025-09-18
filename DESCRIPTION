@@ -1,12 +1,31 @@
 Package: categoricalvariabledistribution
-Title: What the Package Does (One Line, Title Case)
+Title: Provide distributions of categorical variable value sets 
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+      c(person("Hanieh", "Razzaghi", email = "razzaghih@chop.edu", role = c("aut"),
+             comment = c(ORCID = "0000-0001-5001-1590")),
+      person("Kaleigh", "Wieand", email = "wieandk@chop.edu", role = c("aut"),
+             comment = c(ORCID = "0009-0003-7477-2601")),
+      person("Kimberley", "Dickinson", email = "dickinsokl@chop.edu", role = c("aut", "cre"),
+             comment = c(ORCID = "0000-0001-9523-056X")),
+      person("Charles", "Bailey", email = "baileyc@chop.edu", role = c("aut"),
+             comment = c(ORCID = "0000-0002-8967-0662")))
+Description: The Categorical Variable Distribution module, part of the larger SQUBA ecosystem, assesses the contents of a column in the data, when the column can take on a finite set of values. 
+License: MPL-2.0 + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
+URL: https://github.com/ssdqa/categoricalvariabledistribution
+BugReports: https://github.com/ssdqa/categoricalvariabledistribution/issues
+Imports: 
+    cli (>= 3.6.3),
+    dplyr (>= 1.1.4),
+    ggplot2 (>= 3.5.0),
+    purrr (>= 1.0.2),
+    rlang (>= 1.1.4),
+    stats (>= 4.4.0)
+Depends: 
+    argos,
+    R (>= 2.10),
+    squba.gen
+LazyData: true
