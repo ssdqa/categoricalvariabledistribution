@@ -5,6 +5,7 @@
 #' @returns a data frame with the distribution from the specified domain/concept which will be further summarized in `cvd_process`
 #'
 #' @importFrom purrr reduce
+#' @importFrom rlang syms
 #' @export
 #'
 cvd_process_pcornet<-function(cohort,

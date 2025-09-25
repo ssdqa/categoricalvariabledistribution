@@ -20,12 +20,18 @@ BugReports: https://github.com/ssdqa/categoricalvariabledistribution/issues
 Imports: 
     cli (>= 3.6.3),
     dplyr (>= 1.1.4),
+    ggiraph (>= 0.8.9),
     ggplot2 (>= 3.5.0),
+    gt (>= 1.0.0),
     purrr (>= 1.0.2),
+    qicharts2 (>= 0.7.4),
     rlang (>= 1.1.4),
-    stats (>= 4.4.0)
+    stats (>= 4.4.0),
+    timetk (>= 2.9.0)
 Depends: 
     argos,
     R (>= 2.10),
     squba.gen
 LazyData: true
+Suggests: 
+    RSQLite

@@ -9,7 +9,18 @@
 #' @param filter_concept *numeric/string or vector* | The specific code(s) that should be the focus of the analysis; used for `ss_anom_la` and `ms_anom_la`
 #'
 #' @import rlang
+#' @import ggplot2
+#' @import ggiraph
+#' @import gt
+#' @importFrom qicharts2 qic
+#' @importFrom timetk plot_anomalies
+#' @importFrom timetk plot_anomalies_decomp
+#'
+#'
 #' @returns a graph or table to visualize the results from
+#'
+#' @example inst/example-cvd_process_output.R
+#'
 #' @export
 #'
 cvd_output<-function(process_output,

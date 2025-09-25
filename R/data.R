@@ -21,7 +21,7 @@
 #'
 #' A sample version of the table structure expected for the `concept_set`
 #' parameter in the `cvd_process` function. The user should recreate
-#' this file and include their own clinical
+#' this file and include their own clinical concepts of interest.
 #'
 #'  @format ## cvd_concept_set
 #' A data frame with 4 columns:

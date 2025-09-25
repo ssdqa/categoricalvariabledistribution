@@ -29,15 +29,17 @@ check_vs_dist<-function(cohort,
   # group and count facts per valueset item
   if(omop_or_pcornet=='pcornet'){
     concept_counts<-facts_inwindow%>%
-      inner_join(load_codeset(concept_set),
-                 by=setNames('concept_code',final_col))%>%
+      inner_join(concept_set,
+                 by=setNames('concept_code',final_col),
+                 copy=TRUE)%>%
       group_by(!!sym(vs_col), .add=TRUE)%>%
       summarise(ct_concept=n())%>%
       rename('concept_id'=vs_col)
   }else{
     concept_counts<-facts_inwindow%>%
-      inner_join(load_codeset(concept_set),
-                 by=setNames('concept_id',final_col))%>%
+      inner_join(concept_set,
+                 by=setNames('concept_id',final_col),
+                 copy=TRUE)%>%
       group_by(!!sym(vs_col), .add=TRUE)%>%
       summarise(ct_concept=n())%>%
       rename('concept_id'=vs_col)

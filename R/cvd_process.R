@@ -47,16 +47,9 @@
 #' @import dplyr
 #' @importFrom stats setNames
 #'
-#' @export
+#' @example inst/example-cvd_process_output.R
 #'
-#' @examples
-#'   cohort_tbl <- cdm_tbl('person') %>% dplyr::distinct(person_id) %>%
-#'                   dplyr::mutate(start_date = as.Date(-5000),
-#'                   end_date = as.Date(15000),
-#'                   site = ifelse(person_id %in% c(1:6), 'synth1', 'synth2'))
-#'  cvd_process_example <- cvd_process(cohort=cohort_tbl,
-#'                                      domain_tbl=categoricalvariabledistribution::cvd_domain_file,
-#'                                      concept_set=categoricalvariabledistribution::cvd_concept_set)
+#' @export
 #'
 
 cvd_process<-function(cohort,

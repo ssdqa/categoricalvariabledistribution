@@ -8,6 +8,8 @@ cvd_ss_anom_la(process_output, filt)
 }
 \arguments{
 \item{process_output}{\emph{tabular output} | The output from \code{cvd_process}}
+
+\item{filt}{\emph{numeric/string or vector} | The specific code(s) that should be the focus of the analysis}
 }
 \value{
 if analysis was executed by year or greater, a P Prime control chart

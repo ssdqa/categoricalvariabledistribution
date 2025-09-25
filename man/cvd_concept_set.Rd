@@ -5,7 +5,7 @@
 \alias{cvd_concept_set}
 \title{CVD Sample Concept Set}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 43 rows and 4 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 2 rows and 4 columns.
 }
 \usage{
 cvd_concept_set
@@ -13,7 +13,7 @@ cvd_concept_set
 \description{
 A sample version of the table structure expected for the \code{concept_set}
 parameter in the \code{cvd_process} function. The user should recreate
-this file and include their own clinical
+this file and include their own clinical concepts of interest.
 }
 \details{
 @format ## cvd_concept_set

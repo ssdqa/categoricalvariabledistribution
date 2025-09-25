@@ -67,6 +67,7 @@ cvd_ss_exp_la<-function(process_output){
 #' Single Site, Anomaly, Longitudinal Output for Categorical Variable Distribution Module
 #'
 #' @inheritParams cvd_output
+#' @param filt *numeric/string or vector* | The specific code(s) that should be the focus of the analysis
 #'
 #' @returns if analysis was executed by year or greater, a P Prime control chart
 #'         is returned with outliers marked with orange dots
