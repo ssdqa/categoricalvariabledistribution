@@ -1,11 +1,11 @@
 
-#' CVD Sample Domain File
+#' CVD Sample Domain Table
 #'
 #' A sample version of the table structure expected for the `domain_tbl`
 #' parameter in the `cvd_process` function. The user should recreate
 #' this table and include their own domain definitions.
 #'
-#' #' @format ## cvd_domain_file
+#' #' @format ## cvd_domain_tbl
 #' \describe{
 #' A data frame with 4 columns
 #'   \item{domain}{The name of the CDM table associated with the domain of interest}
@@ -14,7 +14,7 @@
 #'   \item{date_field}{The name of the column in the domain table that contains dates to be used for time-based filtering.}
 #' }
 #'
-"cvd_domain_file"
+"cvd_domain_tbl"
 
 
 #' CVD Sample Concept Set

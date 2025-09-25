@@ -24,7 +24,7 @@ cohort_tbl <- cdm_tbl('person') %>% dplyr::distinct(person_id) %>%
 #' This example will use the single site, exploratory, cross sectional
 #' configuration
 cvd_process_example <- cvd_process(cohort=cohort_tbl,
-                                  domain_tbl=categoricalvariabledistribution::cvd_domain_file,
+                                  domain_tbl=categoricalvariabledistribution::cvd_domain_tbl,
                                   concept_set=categoricalvariabledistribution::cvd_concept_set,
                                   omop_or_pcornet='omop',
                                   multi_or_single_site = 'single',
