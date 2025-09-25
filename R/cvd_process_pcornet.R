@@ -16,8 +16,7 @@ cvd_process_pcornet<-function(cohort,
                               p_value = 0.9,
                               time = TRUE,
                               time_span = c('2012-01-01', '2020-01-01'),
-                              time_period = 'year',
-                              vocab_tbl=NULL){
+                              time_period = 'year'){
   # Add site check
   site_filter <- check_site_type(cohort = cohort,
                                  multi_or_single_site = multi_or_single_site)

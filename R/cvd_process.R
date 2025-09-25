@@ -37,7 +37,6 @@
 #' @param time_period *string* | when time = TRUE, this argument defines the distance
 #' between dates within the specified time period.
 #' Defaults to `year`, but other time periods such as `month` or `week` are also acceptable
-#' @param vocab_tbl *tabular input* | optional; table containing crosswalk r
 #'
 #' @returns a data frame with summary results that can be used for `cvd_output` to generate graphical or tabular output
 #'
@@ -53,22 +52,23 @@
 #'
 
 cvd_process<-function(cohort,
-                      domain_tbl,
-                      concept_set,
+                      domain_tbl=NULL,
+                      concept_set=NULL,
                       omop_or_pcornet,
                       multi_or_single_site = 'single',
                       anomaly_or_exploratory='exploratory',
                       p_value = 0.9,
-                      time = TRUE,
+                      time = FALSE,
                       time_span = c('2012-01-01', '2020-01-01'),
-                      time_period = 'year',
-                      vocab_tbl=NULL){
+                      time_period = 'year'){
   ## Check proper arguments
   cli::cli_div(theme = list(span.code = list(color = 'blue')))
 
   if(!multi_or_single_site %in% c('single', 'multi')){cli::cli_abort('Invalid argument for {.code multi_or_single_site}: please enter either {.code multi} or {.code single}')}
   if(!anomaly_or_exploratory %in% c('anomaly', 'exploratory')){cli::cli_abort('Invalid argument for {.code anomaly_or_exploratory}: please enter either {.code anomaly} or {.code exploratory}')}
   if(multi_or_single_site=='single'&anomaly_or_exploratory=='anomaly'&!time){cli::cli_abort('Check not relevant for cross-sectional single site anomaly detection : please enter a different value for {.code multi_or_single_site}, {.code anomaly_or_exploratory}, or {.code time}')}
+  if(is.null(domain_tbl)){cli::cli_abort('You must provide a table as input to {.code domain_tbl}. See {.code categoricalvariabledistribution::cvd_domain_tbl} for an example')}
+  if(is.null(concept_set)){cli::cli_abort('You must provide a table as input to {.code concept_set}. See {.code categoricalvariabledistribution::cvd_concept_set} for an example')}
 
   ## parameter summary output
   output_type <- suppressWarnings(param_summ(check_string='cvd',
@@ -90,8 +90,7 @@ cvd_process<-function(cohort,
                               p_value = p_value,
                               time = time,
                               time_span = time_span,
-                              time_period = time_period,
-                              vocab_tbl = vocab_tbl)
+                              time_period = time_period)
   }else if(tolower(omop_or_pcornet) == 'pcornet'){
     cvd_tbl<-cvd_process_pcornet(cohort = cohort,
                                  domain_tbl = domain_tbl,
@@ -101,8 +100,7 @@ cvd_process<-function(cohort,
                                  p_value = p_value,
                                  time = time,
                                  time_span = time_span,
-                                 time_period = time_period,
-                                 vocab_tbl = vocab_tbl)
+                                 time_period = time_period)
   }else{cli::cli_abort('Invalid argument for {.code omop_or_pcornet}: this function is only compatible with {.code omop} or {.code pcornet}')}
 
   message('Finding valueset item proportions')
@@ -146,17 +144,13 @@ cvd_process<-function(cohort,
     cvd_tbl_fn<-cvd_tbl_prop
   }
 
-  message('Finding concept names')
-  cvd_rslt<-join_to_vocabulary(tbl=cvd_tbl_fn%>%mutate(concept_id=as.integer(concept_id)),
-                               vocab_tbl=vocab_tbl,
-                               col='concept_id',
-                               vocab_col='concept_id')
 
 
-  if('list' %in% class(cvd_rslt)){
-    cvd_rslt[[1]] <- cvd_rslt[[1]] %>% mutate(output_function = output_type$string)
+
+  if('list' %in% class(cvd_tbl_fn)){
+    cvd_tbl_fn[[1]] <- cvd_tbl_fn[[1]] %>% mutate(output_function = output_type$string)
   }else{
-    cvd_rslt <- cvd_rslt %>% mutate(output_function = output_type$string)
+    cvd_tbl_fn <- cvd_tbl_fn %>% mutate(output_function = output_type$string)
   }
 
   print(cli::boxx(c('You can optionally use this dataframe in the accompanying',
@@ -164,6 +158,6 @@ cvd_process<-function(cohort,
                     'See ?cvd_output for more details.'), padding = c(0,1,0,1),
                   header = cli::col_cyan('Output Function Details')))
 
-  return(cvd_rslt)
+  return(cvd_tbl_fn)
 
 }

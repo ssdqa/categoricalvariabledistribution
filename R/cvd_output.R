@@ -7,6 +7,9 @@
 #'
 #' @param process_output *tabular output* | The output from `cvd_process`
 #' @param filter_concept *numeric/string or vector* | The specific code(s) that should be the focus of the analysis; used for `ss_anom_la` and `ms_anom_la`
+#' @param vocab_tbl *tabular input* | OPTIONAL: the location of an external vocabulary table containing concept names for
+#'                  the provided codes. if not NULL, concept names will be available in either a reference
+#'                  table or in a hover tooltip
 #'
 #' @import rlang
 #' @import ggplot2
@@ -24,9 +27,15 @@
 #' @export
 #'
 cvd_output<-function(process_output,
-                     filter_concept){
+                     filter_concept,
+                     vocab_tbl=NULL){
   ## extract output function
   output_function <- process_output %>% collect() %>% distinct(output_function) %>% pull()
+
+  process_output<-join_to_vocabulary(tbl=process_output%>%mutate(concept_id=as.integer(concept_id)),
+                               vocab_tbl=vocab_tbl,
+                               col='concept_id',
+                               vocab_col='concept_id')
 
   if(output_function=='cvd_ss_exp_cs'){
     cvd_output<-cvd_ss_exp_cs(process_output=process_output)
