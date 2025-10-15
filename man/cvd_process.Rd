@@ -12,10 +12,9 @@ cvd_process(
   multi_or_single_site = "single",
   anomaly_or_exploratory = "exploratory",
   p_value = 0.9,
-  time = TRUE,
+  time = FALSE,
   time_span = c("2012-01-01", "2020-01-01"),
-  time_period = "year",
-  vocab_tbl = NULL
+  time_period = "year"
 )
 }
 \arguments{
@@ -69,8 +68,6 @@ analyses are specialized to identify outliers within the cohort.}
 \item{time_period}{\emph{string} | when time = TRUE, this argument defines the distance
 between dates within the specified time period.
 Defaults to \code{year}, but other time periods such as \code{month} or \code{week} are also acceptable}
-
-\item{vocab_tbl}{\emph{tabular input} | optional; table containing crosswalk r}
 }
 \value{
 a data frame with summary results that can be used for \code{cvd_output} to generate graphical or tabular output

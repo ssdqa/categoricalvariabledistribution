@@ -18,6 +18,7 @@
 #' @importFrom qicharts2 qic
 #' @importFrom timetk plot_anomalies
 #' @importFrom timetk plot_anomalies_decomp
+#' @importFrom graphics text
 #'
 #'
 #' @returns a graph or table to visualize the results from

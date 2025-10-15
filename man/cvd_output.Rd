@@ -4,12 +4,16 @@
 \alias{cvd_output}
 \title{Categorical Variable Distribution - Output Generation}
 \usage{
-cvd_output(process_output, filter_concept)
+cvd_output(process_output, filter_concept, vocab_tbl = NULL)
 }
 \arguments{
 \item{process_output}{\emph{tabular output} | The output from \code{cvd_process}}
 
 \item{filter_concept}{\emph{numeric/string or vector} | The specific code(s) that should be the focus of the analysis; used for \code{ss_anom_la} and \code{ms_anom_la}}
+
+\item{vocab_tbl}{\emph{tabular input} | OPTIONAL: the location of an external vocabulary table containing concept names for
+the provided codes. if not NULL, concept names will be available in either a reference
+table or in a hover tooltip}
 }
 \value{
 a graph or table to visualize the results from
