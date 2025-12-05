@@ -31,7 +31,7 @@ cvd_process_pcornet<-function(cohort,
   # Prep cohort
 
   cohort_prep <- prepare_cohort(cohort_tbl = cohort_filter,
-                                age_groups = NULL, codeset = NULL,
+                                age_groups = NULL,
                                 omop_or_pcornet = 'pcornet') %>%
     group_by(!!! syms(grouped_list))
 
