@@ -28,6 +28,7 @@ Imports:
     rlang (>= 1.1.4),
     stats (>= 4.4.0),
     timetk (>= 2.9.0)
+Remotes: PEDSnet/argos, ssdqa/squba.gen
 Depends: 
     argos,
     R (>= 2.10),
