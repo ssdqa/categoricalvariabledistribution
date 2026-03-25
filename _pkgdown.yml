@@ -1,4 +1,10 @@
 url: https://ssdqa.github.io/categoricalvariabledistribution/
 template:
   bootstrap: 5
-
+  light-switch: true
+navbar:
+  left:
+  - text: 'squba Home'
+    href: https://ssdqa.github.io/squba/
+  - text: 'PEDSpace'
+    href: https://hdl.handle.net/20.500.14642/1484
