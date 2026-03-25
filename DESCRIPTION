@@ -15,7 +15,7 @@ License: MPL-2.0 + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-URL: https://github.com/ssdqa/categoricalvariabledistribution
+URL: https://github.com/ssdqa/categoricalvariabledistribution, https://ssdqa.github.io/categoricalvariabledistribution/
 BugReports: https://github.com/ssdqa/categoricalvariabledistribution/issues
 Imports: 
     cli (>= 3.6.3),
