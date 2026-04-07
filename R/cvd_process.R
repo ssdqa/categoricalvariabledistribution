@@ -148,9 +148,19 @@ cvd_process<-function(cohort,
 
 
   if('list' %in% class(cvd_tbl_fn)){
-    cvd_tbl_fn[[1]] <- cvd_tbl_fn[[1]] %>% mutate(output_function = output_type$string)
+    if(omop_or_pcornet=='omop'){
+    cvd_tbl_fn[[1]] <- cvd_tbl_fn[[1]] %>% mutate(output_function = output_type$string,
+                                                  concept_id=as.integer(concept_id))
+    }else{
+      cvd_tbl_fn[[1]] <- cvd_tbl_fn[[1]] %>% mutate(output_function = output_type$string)
+    }
   }else{
-    cvd_tbl_fn <- cvd_tbl_fn %>% mutate(output_function = output_type$string)
+    if(omop_or_pcornet=='omop'){
+    cvd_tbl_fn <- cvd_tbl_fn %>% mutate(output_function = output_type$string,
+                                        concept_id=as.integer(concept_id))
+    }else{
+      cvd_tbl_fn<-cvd_tbl_fn%>% mutate(output_function = output_type$string)
+    }
   }
 
   print(cli::boxx(c('You can optionally use this dataframe in the accompanying',

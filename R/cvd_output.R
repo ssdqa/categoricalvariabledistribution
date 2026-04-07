@@ -30,13 +30,20 @@
 cvd_output<-function(process_output,
                      filter_concept,
                      vocab_tbl=NULL){
+  if(inherits(process_output,"tbl_lazy")){cli::cli_abort('{.code process_output} cannot be a lazy table. Please provide a local data frame.')}
+
   ## extract output function
   output_function <- process_output %>% collect() %>% distinct(output_function) %>% pull()
 
-  process_output<-join_to_vocabulary(tbl=process_output%>%mutate(concept_id=as.integer(concept_id)),
-                               vocab_tbl=vocab_tbl,
-                               col='concept_id',
-                               vocab_col='concept_id')
+  # determine whether to join to concept_id or concept_code in vocabulary table
+  if('character' %in% class(process_output$concept_id)){
+    cid_vocab_join<-'concept_code'
+  }else{cid_vocab_join<-'concept_id'}
+
+  process_output<-join_to_vocabulary(tbl=process_output,
+                                     vocab_tbl=vocab_tbl,
+                                     col='concept_id',
+                                     vocab_col=cid_vocab_join)
 
   if(output_function=='cvd_ss_exp_cs'){
     cvd_output<-cvd_ss_exp_cs(process_output=process_output)
