@@ -39,14 +39,16 @@ check_vs_dist<-function(cohort,
                  by=setNames('concept_code',final_col))%>%
       group_by(!!sym(vs_col), .add=TRUE)%>%
       summarise(ct_concept=n())%>%
-      rename('concept_id'=vs_col)
+      rename('concept_id'=vs_col) %>%
+      collect()
   }else{
     concept_counts<-facts_inwindow%>%
       inner_join(concept_set,
                  by=setNames('concept_id',final_col))%>%
       group_by(!!sym(vs_col), .add=TRUE)%>%
       summarise(ct_concept=n())%>%
-      rename('concept_id'=vs_col)
+      rename('concept_id'=vs_col) %>%
+      collect()
   }
   return(concept_counts)
 }
