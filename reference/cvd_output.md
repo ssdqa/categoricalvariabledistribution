@@ -83,7 +83,7 @@ cvd_process_example <- cvd_process(cohort=cohort_tbl,
 #> This warning is displayed once every 8 hours.
 #> Joining with `by = join_by(person_id, start_date, end_date, site, site_summ, fu_diff, fu)`
 #>  -> copy_to
-#> 2026-10-28 16:12:58.721029
+#> 2026-10-28 16:34:35.924925
 #> Data: df
 #> Warning: `as.sql()` was deprecated in dbplyr 2.6.0.
 #> ℹ Please use `as_table_path()` instead.
@@ -92,7 +92,7 @@ cvd_process_example <- cvd_process(cohort=cohort_tbl,
 #> Table name: concept_set (temp: TRUE)
 #> Data elements: concept_id,concept_name,concept_code,vocabulary_id
 #> Rows: 2
-#> 2026-10-28 16:12:58.795835 ==> 0.07480621 secs
+#> 2026-10-28 16:34:35.985109 ==> 0.06018424 secs
 #> Error in dbplyr_query_fields(con, source): Can't query fields.
 #> ℹ Using SQL: SELECT * FROM `measurement` AS `q01` WHERE (0 = 1)
 #> Caused by error:

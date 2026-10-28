@@ -174,12 +174,12 @@ cvd_process_example <- cvd_process(cohort=cohort_tbl,
 #> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 #> Joining with `by = join_by(person_id, start_date, end_date, site, site_summ, fu_diff, fu)`
 #>  -> copy_to
-#> 2026-10-28 16:12:59.602517
+#> 2026-10-28 16:34:36.645372
 #> Data: df
 #> Table name: concept_set (temp: TRUE)
 #> Data elements: concept_id,concept_name,concept_code,vocabulary_id
 #> Rows: 2
-#> 2026-10-28 16:12:59.623064 ==> 0.02054644 secs
+#> 2026-10-28 16:34:36.661539 ==> 0.01616693 secs
 #> Error in dbplyr_query_fields(con, source): Can't query fields.
 #> ℹ Using SQL: SELECT * FROM `measurement` AS `q01` WHERE (0 = 1)
 #> Caused by error:
