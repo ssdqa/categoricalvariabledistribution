@@ -38,6 +38,7 @@ a graph or table to visualize the results from
 ## Examples
 
 ``` r
+
 #' Source setup file
 source(system.file('setup.R', package = 'categoricalvariabledistribution'))
 
@@ -77,8 +78,22 @@ cvd_process_example <- cvd_process(cohort=cohort_tbl,
 #> 
 #> ℹ Use `spec()` to retrieve the full column specification for this data.
 #> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> Warning: Missing values are always removed in SQL aggregation functions.
+#> Use `na.rm = TRUE` to silence this warning
+#> This warning is displayed once every 8 hours.
 #> Joining with `by = join_by(person_id, start_date, end_date, site, site_summ, fu_diff, fu)`
-#> Error in db_query_fields.DBIConnection(con, ...): Can't query fields.
+#>  -> copy_to
+#> 2026-10-28 16:12:58.721029
+#> Data: df
+#> Warning: `as.sql()` was deprecated in dbplyr 2.6.0.
+#> ℹ Please use `as_table_path()` instead.
+#> ℹ The deprecated feature was likely used in the argos package.
+#>   Please report the issue to the authors.
+#> Table name: concept_set (temp: TRUE)
+#> Data elements: concept_id,concept_name,concept_code,vocabulary_id
+#> Rows: 2
+#> 2026-10-28 16:12:58.795835 ==> 0.07480621 secs
+#> Error in dbplyr_query_fields(con, source): Can't query fields.
 #> ℹ Using SQL: SELECT * FROM `measurement` AS `q01` WHERE (0 = 1)
 #> Caused by error:
 #> ! no such table: measurement

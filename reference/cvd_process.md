@@ -132,6 +132,7 @@ generate graphical or tabular output
 ## Examples
 
 ``` r
+
 #' Source setup file
 source(system.file('setup.R', package = 'categoricalvariabledistribution'))
 
@@ -172,7 +173,14 @@ cvd_process_example <- cvd_process(cohort=cohort_tbl,
 #> ℹ Use `spec()` to retrieve the full column specification for this data.
 #> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 #> Joining with `by = join_by(person_id, start_date, end_date, site, site_summ, fu_diff, fu)`
-#> Error in db_query_fields.DBIConnection(con, ...): Can't query fields.
+#>  -> copy_to
+#> 2026-10-28 16:12:59.602517
+#> Data: df
+#> Table name: concept_set (temp: TRUE)
+#> Data elements: concept_id,concept_name,concept_code,vocabulary_id
+#> Rows: 2
+#> 2026-10-28 16:12:59.623064 ==> 0.02054644 secs
+#> Error in dbplyr_query_fields(con, source): Can't query fields.
 #> ℹ Using SQL: SELECT * FROM `measurement` AS `q01` WHERE (0 = 1)
 #> Caused by error:
 #> ! no such table: measurement
