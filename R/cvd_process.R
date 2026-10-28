@@ -110,7 +110,7 @@ cvd_process<-function(cohort,
     group_by(!!!syms(output_group_list))%>%
     mutate(ct_denom=sum(ct_concept,na.rm=TRUE))%>%
     ungroup()%>%
-    mutate(prop_concept=ct_concept/ct_denom)%>%
+    mutate(prop_concept=as.numeric(ct_concept)/as.numeric(ct_denom))%>%
     collect()%>%
     mutate(concept_id=as.character(concept_id))
 

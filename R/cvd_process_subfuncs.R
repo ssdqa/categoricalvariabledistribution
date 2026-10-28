@@ -5,6 +5,12 @@ check_vs_dist<-function(cohort,
                         grp,
                         omop_or_pcornet){
 
+  if(any(class(concept_set) %in% 'tbl_sql')){
+    concept_set_db <- concept_set
+  }else{
+    concept_set_db <- copy_to_new(df=concept_set, name='concept_set')
+  }
+
   i<-1
   # expect only one row in domain input file
   domain_tbl_name<-domain_tbl$domain[[i]]
@@ -30,16 +36,14 @@ check_vs_dist<-function(cohort,
   if(omop_or_pcornet=='pcornet'){
     concept_counts<-facts_inwindow%>%
       inner_join(concept_set,
-                 by=setNames('concept_code',final_col),
-                 copy=TRUE)%>%
+                 by=setNames('concept_code',final_col))%>%
       group_by(!!sym(vs_col), .add=TRUE)%>%
       summarise(ct_concept=n())%>%
       rename('concept_id'=vs_col)
   }else{
     concept_counts<-facts_inwindow%>%
       inner_join(concept_set,
-                 by=setNames('concept_id',final_col),
-                 copy=TRUE)%>%
+                 by=setNames('concept_id',final_col))%>%
       group_by(!!sym(vs_col), .add=TRUE)%>%
       summarise(ct_concept=n())%>%
       rename('concept_id'=vs_col)

@@ -23,5 +23,7 @@ importFrom(purrr,reduce)
 importFrom(qicharts2,qic)
 importFrom(rlang,syms)
 importFrom(stats,setNames)
-importFrom(timetk,plot_anomalies)
-importFrom(timetk,plot_anomalies_decomp)
+importFrom(timetk,
+  plot_anomalies,
+  plot_anomalies_decomp
+)
